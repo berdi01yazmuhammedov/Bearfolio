@@ -1,4 +1,3 @@
-import { Github } from "lucide-react";
 import { profile } from "../data/profile";
 
 export default function Footer() {
@@ -14,7 +13,10 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-[13px]">
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap gap-x-8 gap-y-3 text-[13px]"
+        >
           <DownloadCvButtonLink />
           <a
             href={profile.contact.linkedin}
@@ -31,7 +33,9 @@ export default function Footer() {
           <a
             href={profile.contact.github}
             className="text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline"
-          >Github</a>
+          >
+            Github
+          </a>
         </nav>
       </div>
 

@@ -3,12 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, FileText } from "lucide-react";
 import { lessons, type Lesson } from "../data/lessons";
 import SectionHeading from "./SectionHeading";
-import { useAssetExists } from "../hooks/useAssetExists";
 import { cn } from "../lib/utils";
 
 function LessonCard({ lesson, index }: { lesson: Lesson; index: number }) {
   const [open, setOpen] = useState(false);
-  const planExists = useAssetExists(lesson.planUrl ?? "");
 
   return (
     <motion.article
@@ -83,20 +81,18 @@ function LessonCard({ lesson, index }: { lesson: Lesson; index: number }) {
         </AnimatePresence>
       </div>
 
-      {planExists && lesson.planUrl && (
-        <a
-          href={lesson.planUrl}
-          className="flex items-center justify-between border-t border-line px-7 py-4 text-[13px] font-medium text-ink transition-colors hover:bg-navy/5"
-        >
-          <span className="inline-flex items-center gap-2">
-            <FileText className="h-4 w-4 text-stone" />
-            View lesson plan
-          </span>
-          <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </a>
-      )}
+      <a
+        href={`/lessons/${lesson.slug}`}
+        className="flex items-center justify-between border-t border-line px-7 py-4 text-[13px] font-medium text-ink transition-colors hover:bg-navy/5"
+      >
+        <span className="inline-flex items-center gap-2">
+          <FileText className="h-4 w-4 text-stone" />
+          Open interactive lesson
+        </span>
+        <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
+      </a>
     </motion.article>
   );
 }

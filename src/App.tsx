@@ -13,10 +13,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { LessonRoutes } from "./components/lessons/LessonRoutes.tsx";
 export default function App() {
-  const lessonPage = <LessonRoutes />;
-
-  if (lessonPage) {
-    return lessonPage;
+  if (window.location.pathname.startsWith("/lessons/")) {
+    return <LessonRoutes />;
   }
 
   return (
