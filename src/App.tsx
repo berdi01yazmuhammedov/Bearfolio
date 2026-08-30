@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import ScrollProgress from "./components/ScrollProgress";
 import Hero from "./components/Hero";
@@ -13,7 +14,19 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { LessonRoutes } from "./components/lessons/LessonRoutes.tsx";
 export default function App() {
-  if (window.location.pathname.startsWith("/lessons/")) {
+  const [, setLocationVersion] = useState(0);
+
+  useEffect(() => {
+    const refreshRoute = () => setLocationVersion((version) => version + 1);
+    window.addEventListener("hashchange", refreshRoute);
+    window.addEventListener("popstate", refreshRoute);
+    return () => {
+      window.removeEventListener("hashchange", refreshRoute);
+      window.removeEventListener("popstate", refreshRoute);
+    };
+  }, []);
+
+  if (window.location.pathname.startsWith("/lessons/") || window.location.hash.startsWith("#/lessons/")) {
     return <LessonRoutes />;
   }
 

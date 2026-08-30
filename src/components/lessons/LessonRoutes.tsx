@@ -7,7 +7,8 @@ import { ExpressingOpinionsPage } from '../../pages/lessons/ExpressingOpinionsPa
  * Return null for the normal one-page portfolio and a page component for a lesson URL.
  */
 export function LessonRoutes() {
-  switch (window.location.pathname) {
+  const route = window.location.hash.startsWith("#/") ? window.location.hash.slice(1) : window.location.pathname;
+  switch (route) {
     case '/lessons/animals-vocabulary':
       return <AnimalsVocabularyPage />;
     case '/lessons/daily-routines':

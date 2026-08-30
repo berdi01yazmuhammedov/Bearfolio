@@ -82,7 +82,7 @@ function LessonCard({ lesson, index }: { lesson: Lesson; index: number }) {
       </div>
 
       <a
-        href={`/lessons/${lesson.slug}`}
+        href={`#/lessons/${lesson.slug}`}
         className="flex items-center justify-between border-t border-line px-7 py-4 text-[13px] font-medium text-ink transition-colors hover:bg-navy/5"
       >
         <span className="inline-flex items-center gap-2">
